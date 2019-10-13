@@ -1,8 +1,8 @@
-<mat-menu #appMenu="matMenu">
-    <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Help</button>
-</mat-menu>
-
-<button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon>more_vert</mat-icon>
-</button>
+<div class="menu-bar" (scroll)="onWindowScroll($event)">
+    <div *ngIf="scrolled" class="logo-container">
+        <img [routerLink]="['/']" src="../../../assets/hw-white-transp.png">
+    </div>
+    <div *ngIf="!scrolled" class="logo-container">
+        <img [routerLink]="['/']" src="../../../assets/hw-purple-transp.png">
+    </div>
+</div>

@@ -1,3 +1,27 @@
-$yellow: #FAED26;
-$dark-purple: #46344E;
-$grey: #5A5560;
+$yellow: #faed26;
+$dark-purple: #46344e;
+$grey: #5a5560;
+.menu-bar {
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    height: 80px;
+    border-bottom: 2px solid $dark-purple;
+}
+
+.scroll {
+    background-color: #46344e;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    height: 80px;
+}
+
+.logo-container {
+    height: 80px;
+}
+
+.logo-container img {
+    height: 100%;
+}
