@@ -2,7 +2,48 @@
     <div *ngIf="scrolled" class="logo-container">
         <img [routerLink]="['/']" src="../../../assets/hw-white-transp.png">
     </div>
+
     <div *ngIf="!scrolled" class="logo-container">
         <img [routerLink]="['/']" src="../../../assets/hw-purple-transp.png">
+    </div>
+
+    <div></div>
+
+    <div class="menu-container">
+        <nav class="navigation">
+            <ul>
+                <li>
+                    <button class="main-menu">Category 1</button>
+                </li>
+                <li>
+                    <button class="main-menu">Category 2</button>
+                </li>
+                <li>
+                    <button class="main-menu">Category 3</button>
+                </li>
+                <li>
+                    <button class="main-menu">Category 4</button>
+                </li>
+                <li>
+                    <button [matMenuTriggerFor]="userAccountMenu" class="account-circle">
+                        <fa-icon [icon]="faUserCircle" size="2x"></fa-icon>
+                    </button>
+                    <mat-menu id="menu" #userAccountMenu="matMenu" xPosition="before">
+                        <div *ngIf="!loggedIn" class="item-container">
+                            <button [routerLink]="['/authenticate']" [queryParams]="{type: 'login'}"
+                                class="login-button">Login</button>
+                            <p>Don't have account? Sign up <a [routerLink]="['/authenticate']"
+                                    [queryParams]="{type: 'register'}" href="#">here!</a></p>
+                        </div>
+                        <div *ngIf="loggedIn" class="item-container">
+                            <button [routerLink]="['/profile']" [queryParams]="{id: userId}" mat-menu-item>My profile</button>
+                            <button [routerLink]="['/editor']" mat-menu-item>EDITOR:New article</button>
+                            <button [routerLink]="['/administration']" mat-menu-item>SYS_ADMIN:Admin panel </button>
+                            <button [routerLink]="['/logout']" mat-menu-item>Logout</button>
+                        </div>
+                    </mat-menu>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>

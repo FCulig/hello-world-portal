@@ -1,0 +1,48 @@
+$dark-purple: #46344e;
+
+img {
+  height: 300px;
+  margin: auto;
+  display: block;
+}
+
+button {
+    color: white;
+    width: 20%;
+    margin: auto;
+    margin-top: 20px;
+    display: block;
+    background-color: $dark-purple;
+    padding: 15px;
+    font-size: 15pt;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+button:hover{
+    border-color: $dark-purple;
+    color: $dark-purple;
+    background-color: white;
+}
+
+p{
+    font-size: 10pt;
+    color: grey;
+    margin: auto;
+    display: block;
+}
+
+.authentication-container p{
+    text-align: center;
+}
+
+mat-form-field {
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+
+mat-label {
+  color: $dark-purple;
+}
