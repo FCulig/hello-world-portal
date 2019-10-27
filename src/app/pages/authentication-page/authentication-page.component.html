@@ -4,23 +4,25 @@
     </div>
     <div class="authentication-container">
         <div *ngIf="type === 'login'" class="login">
-            <mat-form-field appearance="outline">
-                <mat-label>E-Mail</mat-label>
-                <input matInput placeholder="E-Mail">
-                <mat-icon matSuffix>mail_outline</mat-icon>
-            </mat-form-field>
+            <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+                <mat-form-field appearance="outline">
+                    <mat-label>E-Mail</mat-label>
+                    <input formControlName="email" matInput placeholder="E-Mail">
+                    <mat-icon matSuffix>mail_outline</mat-icon>
+                </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password">
-                <mat-icon matSuffix>lock</mat-icon>
-            </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input formControlName="password" matInput placeholder="Password">
+                    <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
 
-            <button>Login</button>
-            <p>Don't have account? <a (click)="changeType()">Click here!</a></p>
+                <button type="submit">Login</button>
+                <p>Don't have account? <a (click)="changeType()">Click here!</a></p>
+            </form>
         </div>
 
-        <div *ngIf="type === 'register'" class="register">
+        <div [formGroup]="registerForm" *ngIf="type === 'register'" class="register">
             <mat-form-field appearance="outline">
                 <mat-label>Username</mat-label>
                 <input matInput placeholder="Username">
@@ -45,7 +47,7 @@
                 <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 
-            <button>Register</button>
+            <button (click)="submitRegister()">Register</button>
             <p>Already have account? <a (click)="changeType()">Click here!</a></p>
         </div>
     </div>

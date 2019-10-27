@@ -5,14 +5,15 @@ import { AuthenticationPageComponent } from './pages/authentication-page/authent
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ArticleEditorPageComponent } from './pages/article-editor-page/article-editor-page.component';
 import { AdminPanelPageComponent } from './pages/admin-panel-page/admin-panel-page.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'authenticate', component: AuthenticationPageComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'editor', component: ArticleEditorPageComponent },
-  { path: 'administration', component: AdminPanelPageComponent },
+  { path: 'editor', component: ArticleEditorPageComponent, canActivate: [AuthGuardService] },
+  { path: 'administration', component: AdminPanelPageComponent, canActivate: [AuthGuardService] }, //dodaj role guard
 ];
 
 @NgModule({

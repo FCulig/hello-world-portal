@@ -17,6 +17,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AdminPanelPageComponent } from './pages/admin-panel-page/admin-panel-page.component';
 import { ArticleEditorPageComponent } from './pages/article-editor-page/article-editor-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { ArticleEditorPageComponent } from './pages/article-editor-page/article-
     NgbDropdownModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [],
   providers: [NgbDropdown],
