@@ -1,2 +1,21 @@
 <!--U modalu preview articla-->
-<p>article-editor-page works!</p>
+
+<div [formGroup]="articleForm" class="article-input-form">
+    <h1>New article:</h1>
+    <mat-form-field>
+        <input matInput placeholder="Title">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea class="short-desc" matInput placeholder="Short description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea class="full-article" matInput placeholder="Article"></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+        <button>Preview</button>
+        <button>Publish</button>
+    </div>
+</div>

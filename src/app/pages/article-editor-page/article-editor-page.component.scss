@@ -1,0 +1,43 @@
+$yellow: #faed26;
+$dark-purple: #46344e;
+$grey: #5a5560;
+.article-input-form {
+    border: 1px solid $dark-purple;
+    border-radius: 5px;
+    margin-top: 180px;
+}
+
+h1 {
+    margin-left: 25px;
+    color: $dark-purple;
+    font-size: 45pt;
+    font-weight: 500;
+}
+
+mat-form-field {
+    width: calc(100% - 50px);
+    margin: 15px auto;
+    display: block;
+}
+
+.short-desc {
+    height: 70px;
+}
+
+.full-article {
+    height: 150px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button-container button {
+    padding: 15px;
+    font-size: 15pt;
+    background-color: $dark-purple;
+    color: white;
+    border-radius: 5px;
+    border: 1px;
+    margin: 10px;
+}

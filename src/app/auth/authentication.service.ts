@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 import { UserService } from "../services/user.service";
+import { User } from '../entities/user';
 
 export interface UserDetails {
   _id: string;
@@ -22,6 +23,7 @@ export interface TokenPayload {
 })
 export class AuthenticationService {
   private token: string;
+  user: User;
 
   constructor(
     private http: HttpClient,
@@ -32,6 +34,8 @@ export class AuthenticationService {
   public login(email, password) {
     this.userService.login(email, password).subscribe(val => {
       this.saveToken(val.token);
+      const usr = new User(val.username, val.email);
+      this.user = usr;
       this.router.navigate(["/"]);
     });
   }

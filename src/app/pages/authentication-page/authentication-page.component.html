@@ -25,25 +25,25 @@
         <div [formGroup]="registerForm" *ngIf="type === 'register'" class="register">
             <mat-form-field appearance="outline">
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Username">
+                <input formControlName="username" matInput placeholder="Username">
                 <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>E-Mail</mat-label>
-                <input matInput placeholder="E-Mail">
+                <input formControlName="email" matInput placeholder="E-Mail">
                 <mat-icon matSuffix>mail_outline</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password">
+                <input formControlName="password" matInput placeholder="Password">
                 <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Repeat password</mat-label>
-                <input matInput placeholder="Repeat password">
+                <input formControlName="repeatedPassword" matInput placeholder="Repeat password">
                 <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 

@@ -14,4 +14,12 @@ export class UserService {
       password: password
     });
   }
+
+  public register(username: string, email: string, password: string): Observable<any>{
+    return this.http.post("http://localhost:3000/api/auth/register", {
+      name: username,
+      email: email,
+      password: password,
+    });
+  }
 }

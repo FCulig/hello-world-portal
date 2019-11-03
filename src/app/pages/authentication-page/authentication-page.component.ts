@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { UserService } from "src/app/services/user.service";
 import { AuthenticationService } from 'src/app/auth/authentication.service';
@@ -13,7 +13,7 @@ export class AuthenticationPageComponent implements OnInit {
   registerForm = new FormGroup({
     username: new FormControl(),
     email: new FormControl(),
-    passowrd: new FormControl(),
+    password: new FormControl(),
     repeatedPassword: new FormControl()
   });
 
@@ -26,7 +26,9 @@ export class AuthenticationPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -47,7 +49,15 @@ export class AuthenticationPageComponent implements OnInit {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
   }
 
-  submitRegister() {
-    console.log("Submit register");
+  submitRegister(){
+    if(this.registerForm.value.repeatedPassword === this.registerForm.value.password){
+      this.userService.register(this.registerForm.value.username, this.registerForm.value.email, this.registerForm.value.password).subscribe(val=>{
+        if(val.success == 1){
+          this.router.navigateByUrl("/authenticate?type=login");
+        }
+      });
+    }else{
+      //TODO: bacanje errora
+    }
   }
 }
