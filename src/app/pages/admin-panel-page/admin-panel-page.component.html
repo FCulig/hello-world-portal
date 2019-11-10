@@ -1,1 +1,48 @@
-<p>admin-panel-page works!</p>
+<!--Tooltipovi-->
+<div class="table-container">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Username </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef> Role </th>
+            <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="roleChange">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button *ngIf="element.role === 'USER'" mat-raised-button>Promote</button>
+                <button *ngIf="element.role === 'WRITER'" mat-raised-button>Demote</button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deleteUser">
+            <th mat-header-cell *matHeaderCellDef>Delete user</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
