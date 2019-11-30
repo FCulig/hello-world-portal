@@ -1,21 +1,33 @@
-<!--U modalu preview articla-->
+<!-- //TODO: U modalu preview articla-->
 
-<div [formGroup]="articleForm" class="article-input-form">
+<form [formGroup]="articleForm" class="article-input-form" (ngSubmit)="onSubmit()">
     <h1>New article:</h1>
     <mat-form-field>
-        <input matInput placeholder="Title">
+        <input formControlName="title" matInput placeholder="Title">
     </mat-form-field>
 
     <mat-form-field>
-        <textarea class="short-desc" matInput placeholder="Short description"></textarea>
+        <textarea formControlName="shortDesc" class="short-desc" matInput placeholder="Short description"></textarea>
     </mat-form-field>
 
     <mat-form-field>
-        <textarea class="full-article" matInput placeholder="Article"></textarea>
+        <textarea formControlName="fullArticle" class="full-article" matInput placeholder="Article"></textarea>
     </mat-form-field>
+
+    <mat-form-field>
+        <mat-select formControlName="category" placeholder="Category">
+            <mat-option *ngFor="let cat of categories" value="{{cat._id}}">{{cat.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="form-group">
+        <label for="img-uplad">Choose article image:</label><br>
+        <hr>
+        <input formControlName="img" type="file" id="img-uplad" (change)="onFileSelect($event)">
+    </div>
 
     <div class="button-container">
         <button>Preview</button>
-        <button>Publish</button>
+        <button type="submit">Publish</button>
     </div>
-</div>
+</form>

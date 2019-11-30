@@ -7,7 +7,7 @@ import {
   NgbDropdown
 } from "@ng-bootstrap/ng-bootstrap";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatTableModule, MatButtonModule } from "@angular/material";
+import { MatInputModule, MatTableModule, MatButtonModule, MatSelectModule } from "@angular/material";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -53,7 +53,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   exports: [],
   providers: [

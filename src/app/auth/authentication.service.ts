@@ -34,8 +34,10 @@ export class AuthenticationService {
   public login(email, password) {
     this.userService.login(email, password).subscribe(val => {
       this.saveToken(val.token);
-      const usr = new User(val.username, val.email);
+      const usr = new User(val.username, val.email, val.id);
       this.user = usr;
+      localStorage.setItem("user-id", val.id);
+      localStorage.setItem("username", val.username);
       this.router.navigate(["/"]);
     });
   }

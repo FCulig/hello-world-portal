@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Input,
+  ChangeDetectorRef
+} from "@angular/core";
 import { User } from "src/app/entities/user";
 import { UserService } from "src/app/services/user.service";
 import { MatTableDataSource } from "@angular/material";
@@ -22,12 +28,16 @@ export class AdminPanelPageComponent implements OnInit {
     "roleChange",
     "deleteUser"
   ];
-  dataSource = new MatTableDataSource(this.users);
+
+  @Input() dataSource = new MatTableDataSource(this.users);
   numberOfUsers: number;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private changeDetectorRefs: ChangeDetectorRef
+  ) {}
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(val => {
@@ -36,10 +46,37 @@ export class AdminPanelPageComponent implements OnInit {
       this.numberOfUsers = this.users.length;
     });
 
-    this.dataSource.paginator = this.paginator;
+    //TODO: popravi undefined
+    console.log(this.users);
+
+    //this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  promoteUser(userId: string) {
+    this.userService.promoteUser(userId).subscribe(val => {
+      if(val.promoted){
+        this.updateTable();
+      }
+    });
+  }
+
+  demoteUser(userId: string) {
+    this.userService.demoteUser(userId).subscribe(val => {
+      if(val.demoted){
+        this.updateTable();
+      }
+    });
+    this.updateTable();
+  }
+
+  private updateTable() {
+    this.userService.getAllUsers().subscribe(val => {
+      this.dataSource = new MatTableDataSource(val);
+      this.changeDetectorRefs.detectChanges();
+    });
   }
 }

@@ -15,15 +15,31 @@ export class UserService {
     });
   }
 
-  public register(username: string, email: string, password: string): Observable<any>{
+  public register(
+    username: string,
+    email: string,
+    password: string
+  ): Observable<any> {
     return this.http.post("http://localhost:3000/api/auth/register", {
       name: username,
       email: email,
-      password: password,
+      password: password
     });
   }
 
-  public getAllUsers():Observable<any>{
+  public getAllUsers(): Observable<any> {
     return this.http.get("http://localhost:3000/api/users");
+  }
+
+  public promoteUser(userId: String): Observable<any> {
+    return this.http.post(
+      "http://localhost:3000/api/users/writer/promote/" + userId, {}
+    );
+  }
+
+  public demoteUser(userId: String): Observable<any> {
+    return this.http.post(
+      "http://localhost:3000/api/users/writer/demote/" + userId, {}
+    );
   }
 }
