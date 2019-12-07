@@ -1,0 +1,12 @@
+.item-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+img {
+  width: 100%;
+}
+
+.img-container{
+    padding: 20px
+}

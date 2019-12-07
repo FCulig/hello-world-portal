@@ -1,0 +1,5 @@
+<div class="list-container">
+    <div *ngFor="let item of articles" class="item">
+        <app-article-list-item [routerLink]="['/article', item._id]" [item]="item"></app-article-list-item>
+    </div>
+</div>

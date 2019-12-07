@@ -26,6 +26,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Interceptor } from './services/authinterceptor';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ArticleComponent } from './pages/article/article.component';
+import { ArticleListComponent } from './pages/article-list/article-list.component';
+import { ArticleListItemComponent } from './components/article-list-item/article-list-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FooterComponent,
     ProfilePageComponent,
     AdminPanelPageComponent,
-    ArticleEditorPageComponent
+    ArticleEditorPageComponent,
+    ArticleComponent,
+    ArticleListComponent,
+    ArticleListItemComponent
   ],
   imports: [
     BrowserModule,
