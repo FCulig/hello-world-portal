@@ -13,6 +13,7 @@ $grey: #5a5560;
 }
 
 .scroll {
+    transition: 0.5s;
     background-color: #46344e;
     width: 100%;
     position: fixed;
@@ -21,6 +22,7 @@ $grey: #5a5560;
 }
 
 .scroll button.account-circle {
+    transition: 0.5s;
     color: white;
     border: 0px;
 }
@@ -77,6 +79,7 @@ button.main-menu {
 }
 
 .scroll button {
+    transition: 0.5s;
     background-color: $dark-purple;
     border: 1px solid white;
     color: white;

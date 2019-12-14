@@ -10,14 +10,15 @@ import { ArticleService } from "src/app/services/article.service";
 })
 export class ArticleListComponent implements OnInit {
   articles: any[];
-
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService
   ) {}
 
   ngOnInit() {
-    this.getArticles(this.route.snapshot.paramMap.get("id"));
+    this.route.params.subscribe(val => {
+      this.getArticles(val.id);
+    });
   }
 
   getArticles(id: string) {

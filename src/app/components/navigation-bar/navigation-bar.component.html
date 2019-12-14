@@ -12,17 +12,8 @@
     <div class="menu-container">
         <nav class="navigation">
             <ul>
-                <li>
-                    <button class="main-menu">Category 1</button>
-                </li>
-                <li>
-                    <button class="main-menu">Category 2</button>
-                </li>
-                <li>
-                    <button class="main-menu">Category 3</button>
-                </li>
-                <li>
-                    <button class="main-menu">Category 4</button>
+                <li *ngFor="let cat of categories" class="main-menu">
+                    <button [routerLink]="['/category', cat._id]" class="main-menu">{{cat.name}}</button>
                 </li>
                 <li>
                     <button [matMenuTriggerFor]="userAccountMenu" class="account-circle">

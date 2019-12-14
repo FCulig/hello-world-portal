@@ -10,6 +10,7 @@ import {
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Router } from "@angular/router";
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: "app-navigation-bar",
@@ -23,19 +24,29 @@ export class NavigationBarComponent implements OnInit {
   loggedIn = false;
 
   userId: number;
+  categories;
 
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private articleService: ArticleService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCategories();
+  }
+
+  private getCategories(){
+    this.articleService.getAllCategories().subscribe(cats=>{
+      this.categories = cats;
+      console.log(cats)
+    })
+  }
 
   @HostListener("window:scroll", ["$event"])
   onWindowScroll(e) {
-    if (this.router.url === "/") {
       const element = document.querySelector(".menu-bar");
 
       const number =
@@ -50,7 +61,7 @@ export class NavigationBarComponent implements OnInit {
         element.classList.remove("scroll");
         this.scrolled = false;
       }
-    }
+
   }
 
   isLoggedIn(): boolean{
