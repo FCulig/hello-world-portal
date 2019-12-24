@@ -73,8 +73,8 @@ export class NavigationBarComponent implements OnInit {
   }
 
   getUsername(){
-    if(this.authService.user){
-      return this.authService.user.username;
+    if(this.authService.isLoggedIn()){
+      return localStorage.getItem('username');
     }
   }
 }

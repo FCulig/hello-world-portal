@@ -1,0 +1,47 @@
+<div class="comment-section-container">
+    <div class="reaction-container">
+        <span id="up">
+            <button (click)="like()" class="reaction">
+                <fa-icon [icon]="faThumbsUp" size="2x"></fa-icon>{{articleLikes.length}}
+            </button>
+        </span>
+        <span id="down">
+            <button (click)="dislike()" class="reaction">
+                <fa-icon [icon]="faThumbsDown" size="2x"></fa-icon>{{articleDislikes.length}}
+            </button>
+        </span>
+    </div>
+    <div class="comments-container">
+        <h3>Comments</h3>
+        <form *ngIf="isLoggedIn()" [formGroup]="addComment" (ngSubmit)="postComment()">
+            <div class="add-comment">
+                <div class="text-area-container">
+                    <mat-form-field>
+                        <textarea rows="5" formControlName="comment" matInput placeholder="Comment on this article"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div class="submit-container">
+                    <button [disabled]="!addComment.valid" id="post-comment" type="submit">Post</button>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="!isLoggedIn()" class="logged-in-messagae">
+            <div class="img-container">
+                <fa-icon id="faded" [icon]="faKey" size="2x"></fa-icon>
+            </div>
+            <div class="message-container">
+                <p class="message">Log in to comment on this article</p>
+            </div>
+        </div>
+        <div *ngFor="let comment of articleComments" class="comment">
+            <div class="comment-user">
+                <!--//TODO: dodaj da se ode na profil usera-->
+                <h4><a id="link-to-profile">{{comment.user.name}}</a> at {{parseDate(comment.timestamp)}}</h4>
+            </div>
+            <div class="comment-text">
+                <p>{{comment.comment}}</p>
+            </div>
+        </div>
+    </div>
+</div>

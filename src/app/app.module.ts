@@ -29,6 +29,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ArticleComponent } from './pages/article/article.component';
 import { ArticleListComponent } from './pages/article-list/article-list.component';
 import { ArticleListItemComponent } from './components/article-list-item/article-list-item.component';
+import { CommentSectionComponent } from './components/comment-section/comment-section.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ArticleListItemComponent } from './components/article-list-item/article
     ArticleEditorPageComponent,
     ArticleComponent,
     ArticleListComponent,
-    ArticleListItemComponent
+    ArticleListItemComponent,
+    CommentSectionComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

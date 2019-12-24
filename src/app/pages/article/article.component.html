@@ -12,3 +12,9 @@
         </div>
     </article>
 </div>
+<app-comment-section 
+    [articleId]="article._id" 
+    [articleLikes]="article.likes" 
+    [articleDislikes]="article.dislikes"
+    [articleComments]="article.comments">
+</app-comment-section>

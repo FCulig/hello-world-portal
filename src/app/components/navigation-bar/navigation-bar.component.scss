@@ -2,6 +2,7 @@ $yellow: #faed26;
 $dark-purple: #46344e;
 $grey: #5a5560;
 .menu-bar {
+    transition: 0.5s;
     background-color: white;
     width: 100%;
     position: fixed;
@@ -28,6 +29,7 @@ $grey: #5a5560;
 }
 
 button.account-circle {
+    transition: 0.5s;
     color: $dark-purple;
     text-align: right;
     border: 1px;
@@ -68,6 +70,7 @@ button.account-circle {
 }
 
 button.main-menu {
+    transition: 0.5s;
     padding: 15px;
     margin-right: 10px;
     background-color: white;
@@ -113,7 +116,7 @@ button.main-menu {
     margin-left: 5px;
 }
 
-//TODO
+//TODO:
 button.account-circle:focus {
     outline: none;
 }

@@ -1,0 +1,99 @@
+$yellow: #faed26;
+$dark-purple: #46344e;
+$grey: #5a5560;
+$border-color: #00000060;
+
+.comment-section-container, .comments-container{
+    margin-top: 20px;
+}
+
+.reaction-container{
+    border-bottom: 1px solid $border-color;
+    padding: 10px 0;
+}
+
+fa-icon{
+    color: $dark-purple;
+}
+
+fa-icon#faded{
+    color: $border-color
+}
+
+.reaction{
+    border: 0;
+    background-color: white;
+    padding: 10px;
+}
+
+.reaction:hover{
+    cursor: pointer;
+}
+
+.reacted{
+    opacity: 0.7;
+}
+
+#down{
+    margin-left: 20px;
+}
+
+.add-comment{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}
+
+.submit-container{
+    display: flex;
+    align-items: center;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+#post-comment{
+    padding: 10px;
+    margin-left: 10px;
+    background-color: $dark-purple;
+    color: white;
+    border: 1px solid $dark-purple;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-weight: 530;
+}
+
+#post-comment:hover{
+    color: $dark-purple;
+    border-color: $dark-purple;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logged-in-messagae{
+    display: grid;
+    grid-template-columns: 3fr 6fr;
+    color: $border-color;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20pt;
+}
+
+.comment{
+    border-top: 1px solid $border-color;
+}
+
+.comment-user{
+    color: $border-color;
+    font-size: 10pt;
+}
+
+.comment-user a#link-to-profile{
+    font-size: 23pt;
+    color: $dark-purple;
+    padding: 5px;
+    padding-left: 0;
+}

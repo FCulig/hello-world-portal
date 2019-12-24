@@ -1,4 +1,4 @@
-<div class="menu-bar" (scroll)="onWindowScroll($event)">
+<div id="container" class="menu-bar" (scroll)="onWindowScroll($event)">
     <div *ngIf="scrolled" class="logo-container">
         <img [routerLink]="['/']" src="../../../assets/hw-white-transp.png">
     </div>
@@ -8,7 +8,7 @@
     </div>
 
     <div></div>
-
+    <!--//TODO: Efekt za ::after da se donji border puni s jedne strane na drugu-->
     <div class="menu-container">
         <nav class="navigation">
             <ul>
