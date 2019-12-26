@@ -7,7 +7,14 @@ import {
   NgbDropdown
 } from "@ng-bootstrap/ng-bootstrap";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatTableModule, MatButtonModule, MatSelectModule } from "@angular/material";
+import {
+  MatInputModule,
+  MatTableModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatSnackBar,
+  MatSpinner
+} from "@angular/material";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -24,13 +31,16 @@ import { ArticleEditorPageComponent } from "./pages/article-editor-page/article-
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { Interceptor } from './services/authinterceptor';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { ArticleComponent } from './pages/article/article.component';
-import { ArticleListComponent } from './pages/article-list/article-list.component';
-import { ArticleListItemComponent } from './components/article-list-item/article-list-item.component';
-import { CommentSectionComponent } from './components/comment-section/comment-section.component';
-import { CommentComponent } from './components/comment/comment.component';
+import { Interceptor } from "./services/authinterceptor";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { ArticleComponent } from "./pages/article/article.component";
+import { ArticleListComponent } from "./pages/article-list/article-list.component";
+import { ArticleListItemComponent } from "./components/article-list-item/article-list-item.component";
+import { CommentSectionComponent } from "./components/comment-section/comment-section.component";
+import { CommentComponent } from "./components/comment/comment.component";
+import { NotifierModule } from "angular-notifier";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +56,8 @@ import { CommentComponent } from './components/comment/comment.component';
     ArticleListComponent,
     ArticleListItemComponent,
     CommentSectionComponent,
-    CommentComponent
+    CommentComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -64,12 +75,15 @@ import { CommentComponent } from './components/comment/comment.component';
     MatTableModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    NotifierModule,
+    MatProgressSpinnerModule
   ],
   exports: [],
   providers: [
     NgbDropdown,
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    MatSnackBar
   ],
   bootstrap: [AppComponent]
 })

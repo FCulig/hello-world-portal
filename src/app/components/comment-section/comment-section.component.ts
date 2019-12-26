@@ -87,7 +87,7 @@ export class CommentSectionComponent implements OnInit {
         this.updateComments(this.articleId);
       });
 
-    this.addComment.reset();
+    this.createForm();
   }
 
   isLoggedIn() {

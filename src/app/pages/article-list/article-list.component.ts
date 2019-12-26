@@ -30,4 +30,8 @@ export class ArticleListComponent implements OnInit {
   setArticles(articles) {
     this.articles = articles;
   }
+
+  isLoading(){
+    return this.articles;
+  }
 }

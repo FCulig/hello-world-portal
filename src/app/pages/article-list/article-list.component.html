@@ -1,5 +1,10 @@
-<div class="list-container">
+<div *ngIf="isLoading()" class="list-container">
+    <h1 class="category-name">
+        {{articles[0].category.name}}
+    </h1>
     <div *ngFor="let item of articles" class="item">
         <app-article-list-item [routerLink]="['/article', item._id]" [item]="item"></app-article-list-item>
     </div>
 </div>
+
+<app-loader *ngIf="!isLoading()"></app-loader>

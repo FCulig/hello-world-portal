@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ArticleService } from "src/app/services/article.service";
 import { DomSanitizer } from "@angular/platform-browser";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-article",
@@ -10,13 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArticleComponent implements OnInit {
   image: any;
-  article: any;
+  @Input() article: any;
   id: string;
 
   constructor(
     private articleService: ArticleService,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -25,23 +25,24 @@ export class ArticleComponent implements OnInit {
     this.getArticle(this.id);
   }
 
+  isLoading() {
+    return this.article;
+  }
+
   private downloadFile(data) {
     let objectURL = URL.createObjectURL(data);
     this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
-  private getImage(id: string){
-    this.articleService.getImage(id).subscribe(
-      result => {
-        this.downloadFile(result);
-      }
-    );
+  private getImage(id: string) {
+    this.articleService.getImage(id).subscribe(result => {
+      this.downloadFile(result);
+    });
   }
 
-  private getArticle(id: string){
-    this.articleService.getArticle(id).subscribe(art=>{
+  private getArticle(id: string) {
+    this.articleService.getArticle(id).subscribe(art => {
       this.article = art;
-    })
+    });
   }
-
 }

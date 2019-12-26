@@ -41,7 +41,6 @@ export class NavigationBarComponent implements OnInit {
   private getCategories(){
     this.articleService.getAllCategories().subscribe(cats=>{
       this.categories = cats;
-      console.log(cats)
     })
   }
 

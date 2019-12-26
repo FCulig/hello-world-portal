@@ -1,20 +1,24 @@
-<div class="article-container">
-    <div class="title-container">
-        <h2>{{article.title}}</h2>
+<div *ngIf="isLoading()" class="article-page-container">
+    <div class="article-container">
+        <div class="title-container">
+            <h2>{{article.title}}</h2>
+        </div>
+        <img [src]="image" class="image">
+        <article>
+            <div class="bold-desc">
+                <b>{{article.shortDescription}}</b>
+            </div>
+            <div class="full-article">
+                <p>{{article.article}}</p>
+            </div>
+        </article>
     </div>
-    <img [src]="image" class="image">
-    <article>
-        <div class="bold-desc">
-            <b>{{article.shortDescription}}</b>
-        </div>
-        <div class="full-article">
-            <p>{{article.article}}</p>
-        </div>
-    </article>
+    <app-comment-section 
+        [articleId]="article._id" 
+        [articleLikes]="article.likes" 
+        [articleDislikes]="article.dislikes"
+        [articleComments]="article.comments">
+    </app-comment-section>
 </div>
-<app-comment-section 
-    [articleId]="article._id" 
-    [articleLikes]="article.likes" 
-    [articleDislikes]="article.dislikes"
-    [articleComments]="article.comments">
-</app-comment-section>
+
+<app-loader *ngIf="!isLoading()"></app-loader>
