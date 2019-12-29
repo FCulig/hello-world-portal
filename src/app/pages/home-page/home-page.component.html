@@ -1,3 +1,19 @@
-<div>
+<div class="hero-img-container">
     <img src="../../../assets/Banner-with background.jpg">
+</div>
+
+<div class="latest-articles full-width">
+    <h2>Latest articles:</h2>
+    <app-horizontal-article-list></app-horizontal-article-list>
+    <hr>
+</div>
+
+<!--<div class="popular-articles full-width">
+    <app-popular-articles></app-popular-articles>
+</div>-->
+
+<div class="full-width" *ngFor="let cat of categories">
+    <h2>{{cat.name}}:</h2>
+    <app-horizontal-article-list [categoryId]="cat._id"></app-horizontal-article-list>
+    <hr>
 </div>

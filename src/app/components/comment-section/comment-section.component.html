@@ -1,12 +1,12 @@
 <div class="comment-section-container">
     <div class="reaction-container">
         <span id="up">
-            <button (click)="like()" class="reaction">
+            <button [ngClass]="{'disabled': !isLoggedIn()}" [disabled]="!isLoggedIn()" (click)="like()" class="reaction">
                 <fa-icon [icon]="faThumbsUp" size="2x"></fa-icon>{{articleLikes.length}}
             </button>
         </span>
         <span id="down">
-            <button (click)="dislike()" class="reaction">
+            <button [ngClass]="{'disabled': !isLoggedIn()}" [disabled]="!isLoggedIn()" (click)="dislike()" class="reaction">
                 <fa-icon [icon]="faThumbsDown" size="2x"></fa-icon>{{articleDislikes.length}}
             </button>
         </span>

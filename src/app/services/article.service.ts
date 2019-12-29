@@ -7,6 +7,14 @@ import { HttpClient } from "@angular/common/http";
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
+  public getArticles(n?: number): Observable<any> {
+    if (n) {
+      return this.http.get("http://localhost:3000/api/articles?n=" + n);
+    } else {
+      return this.http.get("http://localhost:3000/api/articles");
+    }
+  }
+
   public getAllCategories(): Observable<any> {
     return this.http.get("http://localhost:3000/api/categories");
   }
@@ -19,16 +27,34 @@ export class ArticleService {
     return this.http.get("http://localhost:3000/api/articles/" + articleId);
   }
 
+  public getArticlesFromCategory(
+    categoryId: string,
+    n?: number
+  ): Observable<any> {
+    if (n) {
+      return this.http.get(
+        "http://localhost:3000/api/articles/category/" + categoryId + "?n=" + n
+      );
+    } else {
+      return this.http.get(
+        "http://localhost:3000/api/articles/category/" + categoryId
+      );
+    }
+  }
+
+  public getPopularArticles(categoryId: string, n: number): Observable<any> {
+    return this.http.get(
+      "http://localhost:3000/api/articles/bestarticles/" +
+        categoryId +
+        "?n=" +
+        n
+    );
+  }
+
   public getImage(articleId: string): Observable<Blob> {
     return this.http.get(
       "http://localhost:3000/api/articles/img/" + articleId,
       { responseType: "blob" }
-    );
-  }
-
-  public getArticlesFromCategory(categoryId: string): Observable<any> {
-    return this.http.get(
-      "http://localhost:3000/api/articles/category/" + categoryId
     );
   }
 

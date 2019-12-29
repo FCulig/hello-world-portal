@@ -1,0 +1,18 @@
+$dark-purple: #46344e;
+
+h3{
+    color: $dark-purple;
+}
+
+img{
+    width: 100%;
+}
+
+.item-container{
+    padding: 8px;
+}
+
+.item-container:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

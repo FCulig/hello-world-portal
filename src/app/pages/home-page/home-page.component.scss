@@ -1,6 +1,14 @@
+$dark-purple: #46344e;
+
 img {
     width: 100%!important;
 }
 
-div {
+full-width{
+    width: 100%;
+}
+
+h2{
+    color: $dark-purple;
+    font-size: 20pt;
 }

@@ -41,6 +41,9 @@ import { CommentComponent } from "./components/comment/comment.component";
 import { NotifierModule } from "angular-notifier";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { LoaderComponent } from './components/loader/loader.component';
+import { PopularArticlesComponent } from './components/popular-articles/popular-articles.component';
+import { HorizontalArticleListComponent } from './components/horizontal-article-list/horizontal-article-list.component';
+import { HorizontalArticleListItemComponent } from './components/horizontal-article-list-item/horizontal-article-list-item.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     ArticleListItemComponent,
     CommentSectionComponent,
     CommentComponent,
-    LoaderComponent
+    LoaderComponent,
+    PopularArticlesComponent,
+    HorizontalArticleListComponent,
+    HorizontalArticleListItemComponent
   ],
   imports: [
     BrowserModule,
