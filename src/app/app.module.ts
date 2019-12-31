@@ -63,7 +63,7 @@ import { HorizontalArticleListItemComponent } from './components/horizontal-arti
     LoaderComponent,
     PopularArticlesComponent,
     HorizontalArticleListComponent,
-    HorizontalArticleListItemComponent
+    HorizontalArticleListItemComponent,
   ],
   imports: [
     BrowserModule,

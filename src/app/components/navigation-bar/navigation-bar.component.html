@@ -28,8 +28,8 @@
                         </div>
                         <div *ngIf="isLoggedIn()" class="item-container">
                             <button [routerLink]="['/profile', userId]" mat-menu-item>My profile</button>
-                            <button [routerLink]="['/editor']" mat-menu-item>EDITOR:New article</button>
-                            <button [routerLink]="['/administration']" mat-menu-item>SYS_ADMIN:Admin panel </button>
+                            <button *ngIf="isEditor()" [routerLink]="['/editor']" mat-menu-item>New article</button>
+                            <button *ngIf="isAdmin()" [routerLink]="['/administration']" mat-menu-item>Admin panel</button>
                             <button [routerLink]="['/']" (click)="logout()" mat-menu-item>Logout</button>
                         </div>
                     </mat-menu>

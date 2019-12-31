@@ -38,8 +38,13 @@ export class AuthenticationService {
       this.user = usr;
       localStorage.setItem("user-id", val.id);
       localStorage.setItem("username", val.username);
+      localStorage.setItem("role", val.role);
       this.router.navigate(["/"]);
     });
+  }
+
+  public getRole(){
+    return localStorage.getItem("role");
   }
 
   private saveToken(token: string): void {

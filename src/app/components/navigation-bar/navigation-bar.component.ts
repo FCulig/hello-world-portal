@@ -9,8 +9,8 @@ import {
 } from "@angular/core";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Router } from "@angular/router";
-import { AuthenticationService } from 'src/app/auth/authentication.service';
-import { ArticleService } from 'src/app/services/article.service';
+import { AuthenticationService } from "src/app/auth/authentication.service";
+import { ArticleService } from "src/app/services/article.service";
 
 @Component({
   selector: "app-navigation-bar",
@@ -37,48 +37,68 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.getUserId();
+    console.log(localStorage.getItem("role"))
   }
 
-  private getUserId(){
-    this.userId = localStorage.getItem('user-id')
+  private getUserId() {
+    this.userId = localStorage.getItem("user-id");
   }
 
-  private getCategories(){
-    this.articleService.getAllCategories().subscribe(cats=>{
+  private getCategories() {
+    this.articleService.getAllCategories().subscribe(cats => {
       this.categories = cats;
-    })
+    });
   }
 
   @HostListener("window:scroll", ["$event"])
   onWindowScroll(e) {
-      const element = document.querySelector(".menu-bar");
+    const element = document.querySelector(".menu-bar");
 
-      const number =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop ||
-        0;
-      if (number > 80) {
-        element.classList.add("scroll");
-        this.scrolled = true;
-      } else {
-        element.classList.remove("scroll");
-        this.scrolled = false;
-      }
-
+    const number =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+    if (number > 80) {
+      element.classList.add("scroll");
+      this.scrolled = true;
+    } else {
+      element.classList.remove("scroll");
+      this.scrolled = false;
+    }
   }
 
-  isLoggedIn(): boolean{
-      return this.authService.isLoggedIn();
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
-  logout(){
-      this.authService.logout();
+  logout() {
+    this.authService.logout();
   }
 
-  getUsername(){
-    if(this.authService.isLoggedIn()){
-      return localStorage.getItem('username');
+  getUsername() {
+    if (this.authService.isLoggedIn()) {
+      return localStorage.getItem("username");
+    }
+  }
+
+  isAdmin() {
+    if (localStorage.getItem("role") === "ADMIN") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isEditor() {
+    if (this.isAdmin()) {
+      return true;
+    }
+
+    if (localStorage.getItem("role") === "WRITER") {
+      return true;
+    } else {
+      return false;
     }
   }
 }
