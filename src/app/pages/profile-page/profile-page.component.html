@@ -1,1 +1,14 @@
-<p>profile-page works!</p>
+<div *ngIf="isLoading()" class="container">
+    <h2>{{user.name}}</h2>
+    <p>, {{user.role}}</p>
+    <div class="email">E-mail: {{user.email}}</div>
+    <div *ngIf="user.role === 'WRITER'" class="article-list">
+        Users articles:
+        <ol>
+            <li *ngFor="let article of userArticles"><a [routerLink]="['/article', article._id]">{{article.title}}</a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<app-loader *ngIf="!isLoading()"></app-loader>

@@ -13,7 +13,7 @@ import { ArticleListComponent } from './pages/article-list/article-list.componen
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'authenticate', component: AuthenticationPageComponent },
-  { path: 'profile', component: ProfilePageComponent },
+  { path: 'profile/:id', component: ProfilePageComponent },
   { path: 'category/:id', component: ArticleListComponent },
   { path: 'article/:id', component: ArticleComponent },
   { path: 'editor', component: ArticleEditorPageComponent, canActivate: [AuthGuardService] },

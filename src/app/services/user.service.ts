@@ -31,15 +31,21 @@ export class UserService {
     return this.http.get("http://localhost:3000/api/users");
   }
 
+  public getUser(userId: string): Observable<any> {
+    return this.http.get("http://localhost:3000/api/users/" + userId);
+  }
+
   public promoteUser(userId: String): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/api/users/writer/promote/" + userId, {}
+      "http://localhost:3000/api/users/writer/promote/" + userId,
+      {}
     );
   }
 
   public demoteUser(userId: String): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/api/users/writer/demote/" + userId, {}
+      "http://localhost:3000/api/users/writer/demote/" + userId,
+      {}
     );
   }
 }

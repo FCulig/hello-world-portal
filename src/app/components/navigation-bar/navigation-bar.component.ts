@@ -23,7 +23,7 @@ export class NavigationBarComponent implements OnInit {
   scrolled = false;
   loggedIn = false;
 
-  userId: number;
+  userId: string;
   categories;
 
   constructor(
@@ -36,6 +36,11 @@ export class NavigationBarComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    this.getUserId();
+  }
+
+  private getUserId(){
+    this.userId = localStorage.getItem('user-id')
   }
 
   private getCategories(){
