@@ -35,6 +35,10 @@ export class UserService {
     return this.http.get("http://localhost:3000/api/users/" + userId);
   }
 
+  public deleteUser(userId: string): Observable<any> {
+    return this.http.delete("http://localhost:3000/api/users/" + userId);
+  }
+
   public promoteUser(userId: String): Observable<any> {
     return this.http.post(
       "http://localhost:3000/api/users/writer/promote/" + userId,

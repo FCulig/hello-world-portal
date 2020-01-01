@@ -46,3 +46,9 @@ mat-form-field {
 mat-label {
   color: $dark-purple;
 }
+
+a.link:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  color: $dark-purple;
+}

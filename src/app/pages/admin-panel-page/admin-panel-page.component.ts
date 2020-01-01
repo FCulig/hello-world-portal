@@ -45,11 +45,6 @@ export class AdminPanelPageComponent implements OnInit {
       this.users = val;
       this.numberOfUsers = this.users.length;
     });
-
-    //TODO: popravi undefined
-    console.log(this.users);
-
-    //this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
@@ -58,7 +53,7 @@ export class AdminPanelPageComponent implements OnInit {
 
   promoteUser(userId: string) {
     this.userService.promoteUser(userId).subscribe(val => {
-      if(val.promoted){
+      if (val.promoted) {
         this.updateTable();
       }
     });
@@ -66,11 +61,17 @@ export class AdminPanelPageComponent implements OnInit {
 
   demoteUser(userId: string) {
     this.userService.demoteUser(userId).subscribe(val => {
-      if(val.demoted){
+      if (val.demoted) {
         this.updateTable();
       }
     });
     this.updateTable();
+  }
+
+  deleteUser(userId: string) {
+    this.userService.deleteUser(userId).subscribe(val => {
+      this.updateTable();
+    });
   }
 
   private updateTable() {

@@ -27,6 +27,10 @@ export class ArticleService {
     return this.http.get("http://localhost:3000/api/articles/" + articleId);
   }
 
+  public deleteArticle(articleId: string): Observable<any> {
+    return this.http.delete("http://localhost:3000/api/articles/" + articleId);
+  }
+
   public getUsersArticles(userId: string): Observable<any> {
     return this.http.get("http://localhost:3000/api/articles/user/" + userId);
   }

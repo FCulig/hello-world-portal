@@ -1,14 +1,5 @@
-import {
-  Component,
-  OnInit,
-  HostListener,
-  Renderer2,
-  ElementRef,
-  ViewChild,
-  AfterViewInit
-} from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { Router } from "@angular/router";
 import { AuthenticationService } from "src/app/auth/authentication.service";
 import { ArticleService } from "src/app/services/article.service";
 
@@ -27,9 +18,6 @@ export class NavigationBarComponent implements OnInit {
   categories;
 
   constructor(
-    private renderer: Renderer2,
-    private el: ElementRef,
-    private router: Router,
     private authService: AuthenticationService,
     private articleService: ArticleService
   ) {}
@@ -37,7 +25,6 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.getUserId();
-    console.log(localStorage.getItem("role"))
   }
 
   private getUserId() {

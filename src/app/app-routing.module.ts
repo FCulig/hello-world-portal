@@ -27,7 +27,8 @@ const routes: Routes = [
     component: AdminPanelPageComponent,
     canActivate: [AuthGuardService],
     data: { roles: [Role.Admin] }
-  } //dodaj role guard
+  },
+  { path: "**", component: HomePageComponent },
 ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { UserService } from "src/app/services/user.service";
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: "app-authentication-page",
@@ -28,7 +29,8 @@ export class AuthenticationPageComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private notifierService: NotifierService
   ) {}
 
   ngOnInit() {
@@ -54,10 +56,13 @@ export class AuthenticationPageComponent implements OnInit {
       this.userService.register(this.registerForm.value.username, this.registerForm.value.email, this.registerForm.value.password).subscribe(val=>{
         if(val.success == 1){
           this.router.navigateByUrl("/authenticate?type=login");
+          this.notifierService.notify("success", "Account registered!");
+        }else{
+          this.notifierService.notify("error", "Unexpected error!");
         }
       });
     }else{
-      //TODO: bacanje errora
+      this.notifierService.notify("error", "Passwords don't match");
     }
   }
 }

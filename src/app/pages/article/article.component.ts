@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ArticleService } from "src/app/services/article.service";
 import { DomSanitizer } from "@angular/platform-browser";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { NotifierService } from 'angular-notifier';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
   selector: "app-article",
@@ -9,6 +12,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./article.component.scss"]
 })
 export class ArticleComponent implements OnInit {
+  faTrash = faTrash;
   image: any;
   @Input() article: any;
   id: string;
@@ -16,7 +20,10 @@ export class ArticleComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notifierService: NotifierService,
+    private router: Router,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -27,6 +34,27 @@ export class ArticleComponent implements OnInit {
 
   isLoading() {
     return this.article;
+  }
+
+  deleteArticle(){
+    this.articleService.deleteArticle(this.id).subscribe(val=>{
+      this.notifierService.notify("success", "Article deleted!");
+      this.router.navigate(['/']);
+    })
+  }
+
+  canDelete(){
+    if(this.authService.isLoggedIn()){
+      if(this.article.author._id === localStorage.getItem('user-id')){
+        return true;
+      }
+
+      if(this.authService.getRole() === "ADMIN"){
+        return true;
+      }
+    }
+
+    return false;
   }
 
   private downloadFile(data) {

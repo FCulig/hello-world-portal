@@ -2,6 +2,9 @@
     <div class="article-container">
         <div class="title-container">
             <h2>{{article.title}}</h2>
+            <button *ngIf="canDelete()" (click)="deleteArticle()" class="delete-button" mat-raised-button color="warn">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
         </div>
         <img [src]="image" class="image">
         <article>

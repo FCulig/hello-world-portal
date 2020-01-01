@@ -1,8 +1,17 @@
+$dark-purple: #46344e;
+
 img {
   width: 100%;
 }
 
 h2 {
-  font-size: 20pt;
+  font-size: 30pt;
+  display: inline;
+  color: $dark-purple;
 }
 
+.delete-button{
+  float: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
