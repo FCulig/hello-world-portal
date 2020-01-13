@@ -27,7 +27,7 @@
                             <p>Don't have account? Sign up <a [routerLink]="['/authenticate']" [queryParams]="{type: 'register'}" href="#">here!</a></p>
                         </div>
                         <div *ngIf="isLoggedIn()" class="item-container">
-                            <button [routerLink]="['/profile', userId]" mat-menu-item>My profile</button>
+                            <button [routerLink]="['/profile', getUserId()]" mat-menu-item>My profile</button>
                             <button *ngIf="isEditor()" [routerLink]="['/editor']" mat-menu-item>New article</button>
                             <button *ngIf="isAdmin()" [routerLink]="['/administration']" mat-menu-item>Admin panel</button>
                             <button [routerLink]="['/']" (click)="logout()" mat-menu-item>Logout</button>
